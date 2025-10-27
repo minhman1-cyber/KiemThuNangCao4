@@ -14,14 +14,23 @@ public class SoNguyenDuongTest {
     }
 
     @Test
+    public void soNguyenDuongKoHopLe(){
+        Float number = 10.5f;
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, ()->{
+            soNguyenDuong.kiemTraSoNguyenDuong(number);
+        });
+        assertEquals("Khong phai so nguyen", ex.getMessage());
+    }
+
+    @Test
     public void soNguyenDuongHopLe(){
-        Integer number = 10;
+        Float number = 10f;
         assertEquals("So nguyen duong", soNguyenDuong.kiemTraSoNguyenDuong(number));
     }
 
     @Test
     public void soNguyenDuongKhongHopLeTren(){
-        Integer number = 120;
+        Float number = 120f;
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, ()->{
             soNguyenDuong.kiemTraSoNguyenDuong(number);
         });
@@ -30,7 +39,7 @@ public class SoNguyenDuongTest {
 
     @Test
     public void soNguyenDuongKhongHopLeDuoi(){
-        Integer number = -30;
+        Float number = -30f;
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, ()->{
             soNguyenDuong.kiemTraSoNguyenDuong(number);
         });
@@ -39,13 +48,13 @@ public class SoNguyenDuongTest {
 
     @Test
     public void soNguyenDuongHopLeBienTren(){
-        Integer number = 100;
+        Float number = 100f;
         assertEquals("So nguyen duong", soNguyenDuong.kiemTraSoNguyenDuong(number));
     }
 
     @Test
     public void soNguyenDuongHopLeBienDuoi(){
-        Integer number = 1;
+        Float number = 1f;
         assertEquals("So nguyen duong", soNguyenDuong.kiemTraSoNguyenDuong(number));
     }
 

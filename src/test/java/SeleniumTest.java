@@ -11,6 +11,7 @@ import java.time.Duration;
 
 public class SeleniumTest {
     WebDriver driver;
+    String searchContent = "áo";
 
     @BeforeClass
     public void beforeClass() {
@@ -24,7 +25,7 @@ public class SeleniumTest {
         driver.get("https://vitimex.com.vn/");
         Thread.sleep(3000);
         driver.findElement(By.xpath("//a[@data-id = 'js-click-search']")).click();
-        driver.findElement(By.id("inputSearchAuto")).sendKeys("áo");
+        driver.findElement(By.id("inputSearchAuto")).sendKeys(searchContent);
         driver.findElement(By.id("search-header-btn")).click();
         Thread.sleep(4000);
     }
@@ -33,10 +34,8 @@ public class SeleniumTest {
     public void yc2() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Actions actions = new Actions(driver);
-        driver.get("https://vitimex.com.vn/");
+        driver.get("https://vitimex.com.vn/search?q=" + searchContent);
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//a[@href = '/collections/ao-nam']")).click();
-        Thread.sleep(10000);
         WebElement product = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//a[@href='/products/atr5029']")
         ));
@@ -45,6 +44,7 @@ public class SeleniumTest {
                 By.xpath("//button[@data-variantid = '1157243028' and @data-handle='/products/atr5029']")
         ));
         button.click();
+        Thread.sleep(5000);
     }
 
     @AfterClass

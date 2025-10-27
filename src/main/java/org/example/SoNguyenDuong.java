@@ -1,7 +1,10 @@
 package org.example;
 
 public class SoNguyenDuong {
-    public String kiemTraSoNguyenDuong(Integer number){
+    public String kiemTraSoNguyenDuong(Float number){
+        if(number % 1 != 0){
+            throw new IllegalArgumentException("Khong phai so nguyen");
+        }
         if(number == null){
             throw new IllegalArgumentException("Khong duoc null");
         }
